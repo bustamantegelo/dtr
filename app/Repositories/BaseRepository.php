@@ -17,4 +17,23 @@ class BaseRepository
      * @var object Request
      */
     protected $oRequest;
+
+    /**
+     * Get filter param
+     *
+     * @param $aFilter
+     * @return array
+     */
+    public function getFilter($aFilter)
+    {
+        $aParam = [];
+        foreach ($aFilter as $aFilterKey) {
+            $mValue = $this->oRequest->get($aFilterKey);
+            if ($mValue !== null) {
+                array_push($aParam, [$aFilterKey, '=', $mValue]);
+            }
+        }
+
+        return $aParam;
+    }
 }

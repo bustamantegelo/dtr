@@ -65,11 +65,21 @@ class UserRepository extends BaseRepository
      */
     public function getAllUsers()
     {
-        $iType = $this->oRequest->get(UserConstants::TYPE);
-        $iDesignation = $this->oRequest->get(UserConstants::DESIGNATION);
+        $aFilter = [
+            UserConstants::FIRST_NAME,
+            UserConstants::MIDDLE_NAME,
+            UserConstants::LAST_NAME,
+            UserConstants::USERNAME,
+            UserConstants::PASSWORD,
+            UserConstants::SCHOOL,
+            UserConstants::TYPE,
+            UserConstants::DESIGNATION,
+            UserConstants::REQUIRED_HOURS,
+            UserConstants::RENDERED_HOURS
+        ];
+        $aParam = $this->getFilter($aFilter);
         $aUsers = $this->oUsers
-            ->where(UserConstants::TYPE, $iType)
-            ->where(UserConstants::DESIGNATION, $iDesignation)
+            ->where($aParam)
             ->get()
             ->toArray();
         $aCount = $this->getAllCountUsers();
@@ -102,11 +112,21 @@ class UserRepository extends BaseRepository
      */
     public function getAllCountUsers()
     {
-        $iType = $this->oRequest->get(UserConstants::TYPE);
-        $iDesignation = $this->oRequest->get(UserConstants::DESIGNATION);
+        $aFilter = [
+            UserConstants::FIRST_NAME,
+            UserConstants::MIDDLE_NAME,
+            UserConstants::LAST_NAME,
+            UserConstants::USERNAME,
+            UserConstants::PASSWORD,
+            UserConstants::SCHOOL,
+            UserConstants::TYPE,
+            UserConstants::DESIGNATION,
+            UserConstants::REQUIRED_HOURS,
+            UserConstants::RENDERED_HOURS
+        ];
+        $aParam = $this->getFilter($aFilter);
         $iCount = $this->oUsers
-            ->where(UserConstants::TYPE, $iType)
-            ->where(UserConstants::DESIGNATION, $iDesignation)
+            ->where($aParam)
             ->count();
 
         return [

@@ -12,5 +12,8 @@ namespace App\Http\Controllers\Api\v1;
  */
 class ScheduleApiController
 {
-
+    public function __construct()
+    {
+        
+    }
 }

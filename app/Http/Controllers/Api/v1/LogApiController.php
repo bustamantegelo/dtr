@@ -12,5 +12,8 @@ namespace App\Http\Controllers\Api\v1;
  */
 class LogApiController
 {
+    public function __construct()
+    {
 
+    }
 }
